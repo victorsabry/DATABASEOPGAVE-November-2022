@@ -1,0 +1,61 @@
+﻿{
+   "CodeGenerationMode": 1,
+   "ContextClassName": "HotelDBContext",
+   "ContextNamespace": "Models",
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": "Models",
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "HotelDBConnection",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[DemoBooking]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DemoGuest]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DemoHotel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DemoRoom]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Facilities]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[HotelFacility]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "(localdb)\\MSSQLLocalDB.HotelDB",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

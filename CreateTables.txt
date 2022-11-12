@@ -1,0 +1,70 @@
+CREATE TABLE [dbo].[DemoGuest] (
+    [Guest_No] INT          NOT NULL,
+    [Name]     VARCHAR (30) NOT NULL,
+    [Address]  VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Guest_No] ASC)
+);
+
+CREATE TABLE [dbo].[DemoHotel] (
+    [Hotel_No] INT          NOT NULL,
+    [Name]     VARCHAR (30) NOT NULL,
+    [Address]  VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Hotel_No] ASC)
+);
+
+CREATE TABLE [dbo].[DemoRoom] (
+    [Room_No]  INT        NOT NULL,
+    [Hotel_No] INT        NOT NULL,
+    [Types]    CHAR (1)   DEFAULT ('S') NULL,
+    [Price]    FLOAT (53) NULL,
+    PRIMARY KEY CLUSTERED ([Room_No] ASC, [Hotel_No] ASC),
+    FOREIGN KEY ([Hotel_No]) REFERENCES [dbo].[DemoHotel] ([Hotel_No]) ON UPDATE CASCADE,
+    CONSTRAINT [checkType] CHECK ([Types]='S' OR [Types]='F' OR [Types]='D' OR [Types] IS NULL),
+    CONSTRAINT [checkPrice] CHECK ([price]>=(0) AND [price]<=(9999))
+);
+
+CREATE TABLE [dbo].[DemoBooking] (
+    [Booking_id] INT  IDENTITY (1, 1) NOT NULL,
+    [Hotel_No]   INT  NOT NULL,
+    [Guest_No]   INT  NOT NULL,
+    [Date_From]  DATE NOT NULL,
+    [Date_To]    DATE NOT NULL,
+    [Room_No]    INT  NOT NULL,
+    PRIMARY KEY CLUSTERED ([Booking_id] ASC),
+    FOREIGN KEY ([Guest_No]) REFERENCES [dbo].[DemoGuest] ([Guest_No]),
+    FOREIGN KEY ([Room_No], [Hotel_No]) REFERENCES [dbo].[DemoRoom] ([Room_No], [Hotel_No]),
+    CONSTRAINT [incorrect_dates] CHECK ([Date_To]>[Date_From] AND [Date_From]<='2018-04-04')
+);
+
+CREATE TABLE [dbo].[Facilities] (
+    [Facility_id] INT           NOT NULL,
+    [Name]        NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Facility_id] ASC)
+);
+
+CREATE TABLE [dbo].[HotelFacility] (
+    [Hotel_No] INT NOT NULL,
+    [Facility_id]    INT NOT NULL,
+    CONSTRAINT [PK_Table] PRIMARY KEY CLUSTERED ([Facility_id] ASC, [Hotel_No] ASC),
+    FOREIGN KEY ([Hotel_No]) REFERENCES [dbo].[DemoHotel] ([Hotel_No]) ON DELETE CASCADE,
+    FOREIGN KEY ([Facility_id]) REFERENCES [dbo].[Facilities] ([Facility_id]) ON DELETE CASCADE
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
